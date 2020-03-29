@@ -1,0 +1,94 @@
+{
+  "name": "rockplate-vscode",
+  "displayName": "Rockplate VSCode",
+  "description": "Official Rockplate Language Support Extension with Linter and Syntax Highlight for Visual Studio Code",
+  "version": "0.0.1",
+  "author": "Safraz Razik",
+  "publisher": "safrazik",
+  "icon": "images/rockplate-logo.png",
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:rockplate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "rockplate",
+        "aliases": [
+          "Rockplate",
+          "rockplate"
+        ],
+        "extensions": [
+          ".rpl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rockplate",
+        "scopeName": "source.rockplate",
+        "path": "./syntaxes/rockplate.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Rockplate configuration",
+      "properties": {
+        "rockplateLanguageServer.maxNumberOfProblems": {
+          "scope": "resource",
+          "type": "number",
+          "default": 100,
+          "description": "Controls the maximum number of problems produced by the server."
+        },
+        "rockplateLanguageServer.trace.server": {
+          "scope": "window",
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the language server."
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rockplate/rockplate-vscode.git"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint src --ext ts",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^7.0.1",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.43.0",
+    "eslint": "^6.8.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "glob": "^7.1.6",
+    "mocha": "^7.0.1",
+    "typescript": "^3.7.5",
+    "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "rockplate-language-server": "^1.0.0-pre.2",
+    "vscode-languageclient": "^6.1.3",
+    "vscode-uri": "^2.1.1"
+  }
+}

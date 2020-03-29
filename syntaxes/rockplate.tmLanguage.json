@@ -1,0 +1,95 @@
+{
+  "fileTypes": ["rpl"],
+  "name": "rockplate",
+  "patterns": [
+    {
+      "include": "#html"
+    }
+  ],
+  "scopeName": "source.rockplate",
+  "repository": {
+    "main": {
+      "patterns": [
+        {
+          "include": "#multi_line_comment"
+        },
+        {
+          "begin": "(\\[)",
+          "beginCaptures": {
+            "1": {
+              "name": "constant.language.rockplate"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#inner"
+            }
+          ],
+          "end": "(\\])",
+          "endCaptures": {
+            "1": {
+              "name": "constant.language.rockplate"
+            }
+          }
+        }
+      ]
+    },
+    "inner": {
+      "patterns": [
+        {
+          "match": "(if |repeat |end if|end repeat|else)",
+          "name": "keyword.control.rockplate"
+        },
+        {
+          "match": "( is not | are not | is | are )",
+          "name": "constant.language.rockplate"
+        },
+        {
+          "match": "(.+?)",
+          "name": "variable.parameter.rockplate"
+        }
+      ]
+    },
+    "multi_line_comment": {
+      "patterns": [
+        {
+          "begin": "(\\[--)",
+          "beginCaptures": {
+            "1": {
+              "name": "comment.rockplate"
+            }
+          },
+          "contentName": "comment.rockplate",
+          "end": "(--\\])",
+          "endCaptures": {
+            "1": {
+              "name": "comment.rockplate"
+            }
+          }
+        }
+      ]
+    },
+    "schema": {
+      "patterns": [
+        {
+          "begin": "\\{",
+          "end": "\\}",
+          "include": "source.json"
+        }
+      ]
+    },
+    "html": {
+      "patterns": [
+        {
+          "include": "#main"
+        },
+        {
+          "include": "text.html.basic"
+        },
+        {
+          "include": "#schema"
+        }
+      ]
+    }
+  }
+}
