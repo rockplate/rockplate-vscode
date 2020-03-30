@@ -11,17 +11,12 @@ import { URI } from 'vscode-uri';
 import { readFile } from 'fs';
 import { resolve, dirname } from 'path';
 
-// import 'rockplate-language-server';
-
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
   // The server is implemented in node
-  // let serverModule = context.asAbsolutePath(path.join('server', 'out', 'server.js'));
-  //   let serverModule = context.asAbsolutePath(
-  //     path.join('node_modules', 'rockplate-language-server', 'dist', 'rockplate-language-server.js'),
-  //   );
-  let serverModule = require.resolve('rockplate-language-server/dist/rockplate-language-server.js');
+  let serverModule = context.asAbsolutePath('run-server.js');
+  let debugServerModule = context.asAbsolutePath('run-server-debug.js');
 
   // The debug options for the server
   // --inspect=6009: runs the server in Node's Inspector mode so VS Code can attach to the server for debugging
@@ -31,7 +26,7 @@ export function activate(context: ExtensionContext) {
   let serverOptions: ServerOptions = {
     run: { module: serverModule, transport: TransportKind.ipc },
     debug: {
-      module: serverModule,
+      module: debugServerModule,
       transport: TransportKind.ipc,
       options: debugOptions,
     },
