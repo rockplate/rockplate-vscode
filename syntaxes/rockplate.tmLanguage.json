@@ -3,7 +3,10 @@
   "name": "rockplate",
   "patterns": [
     {
-      "include": "#html"
+      "include": "#main"
+    },
+    {
+      "include": "#schema"
     }
   ],
   "scopeName": "source.rockplate",
@@ -75,19 +78,6 @@
           "begin": "\\{",
           "end": "\\}",
           "include": "source.json"
-        }
-      ]
-    },
-    "html": {
-      "patterns": [
-        {
-          "include": "#main"
-        },
-        {
-          "include": "text.html.basic"
-        },
-        {
-          "include": "#schema"
         }
       ]
     }

@@ -1,0 +1,14 @@
+{
+  "fileTypes": ["rphtml"],
+  "name": "rockplatehtml",
+  "patterns": [
+    {
+      "include": "source.rockplate"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "scopeName": "source.rockplatehtml",
+  "repository": {}
+}
