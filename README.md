@@ -13,11 +13,7 @@ This extension provides full support for the next generation Templating language
 
 ## Release Notes
 
-### 1.0.2
-
-- `.rphtml` support
-
-### 1.0.0
+### 1.0.x
 
 Initial release
 

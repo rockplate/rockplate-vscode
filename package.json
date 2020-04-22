@@ -2,7 +2,7 @@
   "name": "rockplate-vscode",
   "displayName": "Rockplate VSCode",
   "description": "Official Rockplate Language Support Extension with Linter and Syntax Highlight for Visual Studio Code",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Safraz Razik",
   "publisher": "safrazik",
   "icon": "images/rockplate-logo.png",
